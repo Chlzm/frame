@@ -1,0 +1,125 @@
+if info.IsDirect||info.IsStopOver&&!info.IsTransfer
+    .leaveArea
+        .leaveTop
+            .leaveCheck
+                if info.Direction == 1
+                    .labelGo 去程
+                    span 去程已选
+                else if info.Direction == 2
+                    .labelGo 返程
+                    span 返程已选
+                else if info.Direction == 0
+                    .labelGo 中间程
+                    span 中间程已选
+            .destina
+                span #{productSegment.DepartureTravelCityName}
+                span.desIcon
+                span #{productSegment.DestinationTravelCityName}
+                - var startDate=(productSegment.DepartureTime).substring(0,10)
+                span #{startDate}
+            a.backBtn.flotBt 返回修改
+        .leaveBottom.clearfix
+            .flightNo
+                if AirLineLogo
+                    img(src=AirLineLogo)
+                else
+                    img(src="http://vacations.ceair.com/assets/images/mu.png")
+                if info.IsShareAirLineLine
+                    .flyDescr #{airLineName}&nbsp;#{info.FlightNo}<br/>#{info.FlightStyle}共享
+                else
+                    .flyDescr #{airLineName}&nbsp;#{info.FlightNo}<br/>#{info.FlightStyle}
+            .flightInfor
+                .flightInforTop.clearfix
+                    .startDesti
+                        .Site #{productSegment.DepartureTravelCityName}
+                        .Port #{info.DepartureAirPort}#{info.StartTerminalName}
+                    .stateTime
+                        if  info.IsDirect
+                            .timeTop 直达
+                        else if info.IsStopOver
+                            .timeTop 经停
+                        .timeIcon
+                    .endDesti
+                        .Site #{productSegment.DestinationTravelCityName}
+                        .Port #{info.DestinationAirPort}#{info.EndTerminalName}
+                .flightInforBtm.clearfix
+                        //直达或经停起飞时间处理
+                        - var startGo=new Date(Date.parse(info.DepartureTime))
+                        - var gohours=startGo.getHours()>=10?startGo.getHours():"0"+startGo.getHours();
+                        - var gominutes=startGo.getMinutes()>=10?startGo.getMinutes():"0"+startGo.getMinutes();
+                        - var startTime=gohours+":"+gominutes;
+                        .flyTime.first-child #{startTime}
+                        .mid
+                        //直达或经停到达时间处理
+                        - var endBack=new Date(Date.parse(info.DestinationTime))
+                        - var backhours=endBack.getHours()>=10?endBack.getHours():"0"+endBack.getHours();
+                        - var backminutes=endBack.getMinutes()>=10?endBack.getMinutes():"0"+endBack.getMinutes();
+                        - var endTime=backhours+":"+backminutes;
+                        - var intervalMonth=endBack.getMonth()-startGo.getMonth();
+                        - var intervalDay=endBack.getDate()-startGo.getDate();
+                        - var intervalMsg=intervalDay>=1||intervalMonth>=1?" +1":"";
+                        .flyTime.last-child  #{endTime+intervalMsg}
+            .flightRuler
+                .tank #{info.ShippingSpaceName}
+                a.rul(data-text=info.ExchangeRule) 退改签规则
+                if info.Quantity == ">9" || info.Quantity == "9" || info.Quantity>9
+                   .tickets(style="display:none")
+                else
+                   .tickets 剩#{info.Quantity}张
+            .flghtReset
+                span.resetIcon
+                span 重新选择
+else if info.IsTransfer
+    .leaveArea
+        .leaveTop
+            .leaveCheck
+                if info.Direction == 1
+                    .labelGo 去程
+                    span 去程已选
+                else if info.Direction == 2
+                    .labelGo 返程
+                    span 返程已选
+                else if info.Direction == 0
+                    .labelGo 中程
+                    span 中间程已选
+            .destina
+                span #{transFer1.StartCityName}
+                span.desIcon
+                span #{transFer2.EndCityName}
+                span #{goDate}
+            a.backBtn.flotBt 返回修改
+        .leaveBottom.clearfix
+            .flightNo
+                if transFer1.AirlineLogo
+                    img(src=transFer1.AirLineLogo)
+                else
+                    img(src= "http://vacations.ceair.com/assets/images/mu.png")
+                if  AirlineNum == 1
+                    .flyDescr #{transFer1.AirlineName} | 2个航班
+                else
+                    .flyDescr 多航空公司 | 2个航班
+            .flightInfor
+                .flightInforTop.clearfix
+                    .startDesti
+                        .Site #{transFer1.StartCityName}
+                        .Port #{transFer1.StartAirportName}#{transFer1.StartTerminalName}
+                    .stateTime
+                        .timeTop 中转
+                        .timeIcon
+                    .endDesti
+                        .Site #{transFer2.EndCityName}
+                        .Port #{transFer2.EndAirportName}#{transFer2.EndTerminalName}
+                .flightInforBtm.clearfix
+                    .flyTime.first-child #{goTime}
+                    .mid
+                    .flyTime.last-child  #{backTime}
+            .flightRuler
+                .tank #{info.ShippingSpaceName}
+                a.rul(data-text=info.ExchangeRule) 退改签规则
+                if info.Quantity == ">9" || info.Quantity == "9" || info.Quantity>9
+                    .tickets(style="display:none")
+                else
+                    .tickets 剩#{info.Quantity}张
+            .flghtReset
+                span.resetIcon
+                span 重新选择

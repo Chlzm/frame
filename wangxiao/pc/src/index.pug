@@ -1,0 +1,468 @@
+extends template/pageDefault.pug
+block vars
+    - var config = {title:"旅游度假", body:{cls:""},keywords:'旅游度假',description:'旅游度假'}
+block css
+    link(href='css/travel.css',rel='stylesheet')
+//- 页面主体内容
+block mainContent
+    //-首页顶部导航搜索
+    .topNav
+        .tnContent
+          .tc01
+            span.tcTab
+              a(data-type='').all.active 全部
+              a(data-type='1') 自由行
+              a(data-type='2') 团队游
+              a(data-type='3') 酒店套餐
+            span.tcOther
+              a#playHappy.locationPlay 当地玩乐
+              a.useCar01(href='http://rentalcar.ceair.com/',target='_blank') 用车
+          .tc02.clearfix
+            .startPlace.lt_place.changeCity
+              span.palce.city 上海
+              span.choisePace 出发
+                i.arrow
+            .productType
+              span.flyIco
+              span.addFont +
+              span.hotelIco
+              span.chioseType 机+酒
+                i.arrow
+            .productSearch.clearfix
+                input.searchInput(type='text',placeholder='请输入目的地或关键字查询')
+                a.ls_btn.searchBtn 搜索
+          //-动态机酒弹框
+          #indexSearchModel.planAddHotelPop
+             include template/planAddHotel.pug
+    //图片轮播
+    #imageScroll.imageScroll
+      a.next
+      a.prev
+      ul.imgList
+          li(style="background-image: url('http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/Banner/2017/3/13/68197126-e16c-41cd-9116-726e0be0e99d.jpg');")
+            a(href='//www.ceair.com',target='_blank',title="aaa")
+          li(style="background-image: url('http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/Banner/2017/3/1/1e2d87e2-ef60-42c9-b2ef-b880e14e7d75.jpg');")
+            a(href='//www.ceair.com',target='_blank',title="aaa")
+          li(style="background-image: url('http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/Banner/2017/3/13/68197126-e16c-41cd-9116-726e0be0e99d.jpg');")
+            a(href='//www.ceair.com',target='_blank',title="aaa")
+          li(style="background-image: url('http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/Banner/2017/3/1/1e2d87e2-ef60-42c9-b2ef-b880e14e7d75.jpg');")
+            a(href='//www.ceair.com',target='_blank',title="aaa")
+    //首页侧边导航
+    .indexLeftNav
+      .ilfnbox
+          dl.mainNav
+            dd
+              .ilfContent
+                span.navIco.Ico1
+                span.arrow
+                div.bigTitle 主题游
+                div.childNav
+                  a 邮轮
+                  a 亲子
+                  a 情侣
+                  a 海岛游
+            dd
+              .ilfContent
+                span.navIco.Ico2
+                span.arrow
+                div.bigTitle 国内旅游
+                div.childNav
+                  a 北京
+                  a 上海
+                  a 广州
+                  a 哈尔滨
+            dd
+              .ilfContent
+                span.navIco.Ico3
+                span.arrow
+                div.bigTitle 港澳台 日韩
+                div.childNav
+                  a 香港
+                  a 澳门
+                  a 台湾
+                  a 济州岛
+            dd
+              .ilfContent
+                span.navIco.Ico4
+                span.arrow
+                div.bigTitle 东南亚
+                div.childNav
+                  a 普吉
+                  a 清迈
+                  a 沙巴
+                  a 巴厘岛
+            dd
+              .ilfContent
+                span.navIco.Ico5
+                span.arrow
+                div.bigTitle 欧美
+                div.childNav
+                  a 普吉
+                  a 清迈
+                  a 沙巴
+                  a 巴厘岛
+            dd
+              .ilfContent
+                span.navIco.Ico6
+                span.arrow
+                div.bigTitle 澳新中东非
+                div.childNav
+                  a 悉尼
+                  a 迪拜
+                  a 帕劳
+                  a 新西兰
+          //首页侧边导航弹出层
+          .indexLeftNavContent
+              .ilNavContent.NavBlock.clearfix
+                  dl.towNav
+                    dt 二级字段(主题游)
+                    dd.clearfix
+                      a 三级字段
+                      a 三级字段
+                      a 三级字段
+                      a 三级字段
+                      a 三级字段
+                      a 三级字段
+                  dl.towNav
+                    dt 二级字段
+                    dd.clearfix
+                      a 三级字段
+                      a 三级字段
+                      a 三级字段
+                      a 三级字段
+                      a 三级字段
+                      a 三级字段
+              .ilNavContent.clearfix
+                dl.towNav
+                  dt 二级字段（国内旅游）
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+              .ilNavContent.clearfix
+                dl.towNav
+                  dt 二级字段（港澳台）
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+              .ilNavContent.clearfix
+                dl.towNav
+                  dt 二级字段（东南亚）
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+              .ilNavContent.clearfix
+                dl.towNav
+                  dt 二级字段（欧美）
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                          a 三级字段
+                          a 三级字段
+                          a 三级字段
+              .ilNavContent.clearfix
+                dl.towNav
+                  dt 二级字段（澳新中东非）
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                dl.towNav
+                  dt 二级字段
+                  dd.clearfix
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+                    a 三级字段
+    //我们的保障
+    .ourSecurity
+      .osContent
+        ul.clearfix
+         li
+           span.bzIco.bzIco01
+           p.title 优惠的旅游价格
+           p.detail 惊喜优惠价，为您节省旅游预算
+         li
+           span.bzIco.bzIco02
+           p.title 优质的客服支持
+           p.detail 7*16小时专业客服为您服务
+         li
+           span.bzIco.bzIco03
+           p.title 优选的机酒资源
+           p.detail 丰富的东航机票线路，优质的全球品牌酒店
+         li
+           span.bzIco.bzIco04
+           p.title 会员的权益保障
+           p.detail 指定产品东方万里行会员出行结束可返积分
+         li
+           span.bzIco.bzIco05
+           p.title 透明的旅行方案
+           p.detail 透明的一站式旅游出行解决方案，所见即所得
+         li
+           span.bzIco.bzIco06
+           p.title 灵活的支付方式
+           p.detail 支持部分或全额万里行积分支付旅游产品
+    //旅游特惠卖
+    .firstBanner
+       h1.head 热卖精选
+       .fbContent
+         span.next
+         span.prev
+         #fbImgScroll.fbImgScroll
+           ul.clearfix
+             li
+                 a(href='//www.ceair.com',target='_blank')
+                     span.title 当季必须
+                     img(src='images/imgDefault.png',data-src='http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/HomeProduct/2017/3/10/70c9d3f4-37fb-4e8d-ae05-4cc4a6bc9046.jpg')
+             li
+                 a(href='//www.ceair.com',target='_blank',title="当季必须当季必须当季必须当季必须当季必须")
+                     span.title 当季必须当季必须当季必须当季必须当季必须
+                     img(src='images/imgDefault.png',data-src='http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/HomeProduct/2017/3/10/70c9d3f4-37fb-4e8d-ae05-4cc4a6bc9046.jpg')
+             li
+                 a(href='//www.ceair.com',target='_blank')
+                     span.title 当季必须
+                     img(src='images/imgDefault.png',data-src='http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/HomeProduct/2017/3/10/70c9d3f4-37fb-4e8d-ae05-4cc4a6bc9046.jpg')
+             li
+                 a(href='//www.ceair.com',target='_blank')
+                     span.title 当季必须
+                     img(src='images/imgDefault.png',data-src='http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/HomeProduct/2017/3/10/70c9d3f4-37fb-4e8d-ae05-4cc4a6bc9046.jpg')
+             li
+                 a(href='//www.ceair.com',target='_blank')
+                    span.title 当季必须
+                    img(src='images/imgDefault.png',data-src='http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/HomeProduct/2017/3/10/70c9d3f4-37fb-4e8d-ae05-4cc4a6bc9046.jpg')
+             li
+                 a(href='//www.ceair.com',target='_blank')
+                    span.title 当季必须
+                    img(src='images/imgDefault.png',data-src='http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/HomeProduct/2017/3/10/70c9d3f4-37fb-4e8d-ae05-4cc4a6bc9046.jpg')
+    //境内旅游
+    .commonBanner
+       h1.head
+          span.title 境内旅游
+          span.moreProduce
+             em(data-TagID="1") 北京
+             em(data-TagID="1") 上海
+             em(data-TagID="1") 广州
+             em(data-TagID="1") 成都
+             em(data-TagID="1") 杭州
+             em(data-TagID="1") 厦门
+             em(data-TagID="1") 三亚
+             em(data-TagID="1") 云南
+             em(data-TagID="1") 广西
+             em(data-TagID="1") 西藏
+             em.more
+               | 更多
+               i.ico
+       .cbContent.clearfix
+          .bannerMod
+            .banner01
+                a(href='#')
+                    img(src='images/imgDefault.png',data-src='http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/HomeProduct/2017/3/10/b2ee2a7b-3767-4910-a8b7-176fe659bfaa.jpg')
+            .banner02
+                a(href='#')
+                    img(src='images/imgDefault.png',data-src='http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/HomeProduct/2017/3/10/f0b2e1e9-2fa0-4a4c-a937-1d35a3e5c063.jpg')
+          ul.productList.clearfix
+    //境外旅游
+    .commonBanner
+      h1.head
+        span.title.redTitle 境外旅游
+        span.moreProduce
+          em(data-TagID="1") 北京
+          em(data-TagID="1") 上海
+          em(data-TagID="1") 广州
+          em(data-TagID="1") 成都
+          em(data-TagID="1") 杭州
+          em(data-TagID="1") 厦门
+          em(data-TagID="1") 三亚
+          em(data-TagID="1") 云南
+          em(data-TagID="1") 广西
+          em(data-TagID="1") 西藏
+          em.more
+            | 更多
+            i.ico
+      .cbContent.clearfix
+        .bannerMod
+          .banner01
+              a(href='#')
+                img(src='images/imgDefault.png',data-src='http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/HomeProduct/2017/3/10/b2ee2a7b-3767-4910-a8b7-176fe659bfaa.jpg')
+          .banner02
+              a(href='#')
+                img(src='images/imgDefault.png',data-src='http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/HomeProduct/2017/3/10/f0b2e1e9-2fa0-4a4c-a937-1d35a3e5c063.jpg')
+        ul.productList.clearfix
+    //当地玩乐
+    .commonBanner
+      h1.head
+        span.title.greenTitle 境外旅游
+        span.moreProduce
+          em(data-TagID="1") 北京
+          em(data-TagID="1") 上海
+          em(data-TagID="1") 广州
+          em(data-TagID="1") 成都
+          em(data-TagID="1") 杭州
+          em(data-TagID="1") 厦门
+          em(data-TagID="1") 三亚
+          em(data-TagID="1") 云南
+          em(data-TagID="1") 广西
+          em(data-TagID="1") 西藏
+          em.more
+            | 更多
+            i.ico
+      .cbContent.clearfix
+        .bannerMod
+          .banner01
+              a(href='#')
+                img(src='images/imgDefault.png',data-src='http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/HomeProduct/2017/3/10/b2ee2a7b-3767-4910-a8b7-176fe659bfaa.jpg')
+          .banner02
+              a(href='#')
+                img(src='images/imgDefault.png',data-src='http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/HomeProduct/2017/3/10/f0b2e1e9-2fa0-4a4c-a937-1d35a3e5c063.jpg')
+        ul.productList.clearfix
+    //底部广告
+    .bottomBanner
+        a(href='#')
+            img(src='images/imgDefault.png',data-src='http://ceair.oss-cn-shanghai.aliyuncs.com/image/Vacation/Pc/Banner/2017/3/1/1e2d87e2-ef60-42c9-b2ef-b880e14e7d75.jpg')
+
+//-页面使用到的js
+block js
+    script(src='js/index.min.js',type='text/javascript')
