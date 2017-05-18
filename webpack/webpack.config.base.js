@@ -2,7 +2,6 @@ var webpack = require('webpack')
 var path = path = require('path')
 var rootPath = path.dirname(__dirname)
 var os = require('os');
-var HtmlWebpackPlugin = require('html-webpack-plugin')
 const pxtorem = require('postcss-pxtorem');
 var banner = os.userInfo().username + ' modified this file at ' + new Date().toLocaleString()
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -20,8 +19,6 @@ module.exports = {
             loaders: ['babel-loader']
         },
         // 处理antd的loader，会将antd相关的css抽离生成对应的name-common.css，
-        // author: 邵健
-        // time 2017/3/21
         {
             test: /\.(css|less)$/,
             // 如果antd-mobile才需要处理打包
@@ -31,8 +28,6 @@ module.exports = {
           }
         ,
         //兼容原有项目。非antd-mobile和normalize对应的css在项目中引入还是会打入js bundle中。
-        // author: 邵健
-        // time 2017/3/21
         {
             test: /\.css$/,
             exclude: /(antd-mobile|normalize|\.\.\/travel\/app\/src\/js\/components)/,
@@ -135,16 +130,13 @@ module.exports = {
         'react-dom': 'window.ReactDOM',
         'jQuery':'window.jQuery',
         'jquery':'window.jQuery',
-        'Zepto':'window.Zepto'
+        'Zepto':'window.Zepto',
+        'vue':'window.Vue'
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.BannerPlugin(banner, {
             entryOnly: true
-        }),
-        new HtmlWebpackPlugin({
-            filename:'../index.html',
-            template:'template.html'
         }),
         extractCSS
     ],
