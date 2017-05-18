@@ -14,7 +14,7 @@ new travelIndex().init();*/
 new Vue({
     el: '#app',
     data: {
-        message:'333'
+        message:'333dddd'
     },
     methods: {
         test:()=>{

@@ -36,7 +36,9 @@ function runWebpack(baseConfig, isProduction) {
     config.entry = {}
     config.entry = moduleConfig.entry
     //config.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/");
-
+    var compiler = webpack(config);
+    var server = new WebpackDevServer(compiler);
+    server.listen(8080);
     // handle output
     if (outputType === 'string') {
         config.output = {}
@@ -53,17 +55,7 @@ function runWebpack(baseConfig, isProduction) {
 
     return new Promise(function(resolve, reject) {
         var count = 0
-        var compiler = webpack(config);
-        var server = new WebpackDevServer(compiler,{
-            contentBase:path.dirname(__dirname),
-            historyApiFallback: true,
-            hot: true,
-            inline: true,
-            stats: 'errors-only',
-            host: "localhost",
-            port: "8080",
-        });
-        server.listen(8080);
+        
         var compiler=webpack(config, function(err, stats) {
             if (err) {
                 reject(err)
@@ -83,11 +75,11 @@ function runWebpack(baseConfig, isProduction) {
             } else {
                 console.log('change times: ' + count)
             }
-            count += 1;
+            count += 1
         })
 
         if(isHot){
-            //runHot(compiler)
+            runHot(compiler)
         }
     })
 }
