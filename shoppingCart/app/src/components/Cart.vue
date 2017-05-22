@@ -10,6 +10,12 @@
     <p>Total: {{ total | currency }}</p>
     <p><button :disabled="!products.length" @click="checkout(products)">Checkout</button></p>
     <p v-show="checkoutStatus">Checkout {{ checkoutStatus }}.</p>
+    <select name="" id="" v-model="message">
+      <option v-bind:value="1">1</option>
+      <option v-bind:value="2">2</option>
+      <option v-bind:value="message">1233331</option>
+    </select>
+    <p>{{message}}</p>
   </div>
 </template>
 
@@ -17,6 +23,11 @@
 import { mapGetters } from 'vuex'
 
 export default {
+    data(){
+        return {
+            message:1233331
+        }
+    },
   computed: {
     ...mapGetters({
       products: 'cartProducts',

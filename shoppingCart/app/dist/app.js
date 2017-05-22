@@ -1,4 +1,4 @@
-/*! Gaodun modified this file at 2017-5-22 11:42:22 */
+/*! Gaodun modified this file at 2017-5-22 15:16:37 */
 webpackJsonp([0],[
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -4903,6 +4903,12 @@ var _vuex = __webpack_require__(114);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 exports['default'] = {
+  data: function data() {
+    return {
+      message: 1233331
+    };
+  },
+
   computed: (0, _extends3['default'])({}, (0, _vuex.mapGetters)({
     products: 'cartProducts',
     checkoutStatus: 'checkoutStatus'
@@ -10644,13 +10650,13 @@ module.exports = __webpack_require__(24);
 /* 385 */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div id=\"app\">\n  <h1>Frame</h1>\n  <p>\n    <!-- use router-link component for navigation. -->\n    <!-- specify the link by passing the `to` prop. -->\n    <!-- <router-link> will be rendered as an `<a>` tag by default -->\n    <router-link to=\"/foo\">Go to Foo</router-link>\n    <router-link to=\"/bar\">Go to Bar</router-link>\n  </p>\n  <!-- route outlet -->\n  <!-- component matched by the route will render here -->\n  <transition name=\"fade\" mode=\"out-in\">\n    <router-view></router-view>\n  </transition>\n</div>\n";
+module.exports = "\n<div id=\"example-5\">\n  <h1>Frame</h1>\n  <p>\n    <!-- use router-link component for navigation. -->\n    <!-- specify the link by passing the `to` prop. -->\n    <!-- <router-link> will be rendered as an `<a>` tag by default -->\n    <router-link to=\"/foo\">Go to Foo</router-link>\n    <router-link to=\"/bar\">Go to Bar</router-link>\n  </p>\n\n  <!-- route outlet -->\n  <!-- component matched by the route will render here -->\n  <transition name=\"fade\" mode=\"out-in\">\n    <router-view></router-view>\n  </transition>\n</div>\n";
 
 /***/ }),
 /* 386 */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"cart\">\n  <h2>Your Cart</h2>\n  <p v-show=\"!products.length\"><i>Please add some products to cart.</i></p>\n  <ul>\n    <li v-for=\"p in products\">\n      {{ p.title }} - {{ p.price | currency }} x {{ p.quantity }}\n    </li>\n  </ul>\n  <p>Total: {{ total | currency }}</p>\n  <p><button :disabled=\"!products.length\" @click=\"checkout(products)\">Checkout</button></p>\n  <p v-show=\"checkoutStatus\">Checkout {{ checkoutStatus }}.</p>\n</div>\n";
+module.exports = "\n<div class=\"cart\">\n  <h2>Your Cart</h2>\n  <p v-show=\"!products.length\"><i>Please add some products to cart.</i></p>\n  <ul>\n    <li v-for=\"p in products\">\n      {{ p.title }} - {{ p.price | currency }} x {{ p.quantity }}\n    </li>\n  </ul>\n  <p>Total: {{ total | currency }}</p>\n  <p><button :disabled=\"!products.length\" @click=\"checkout(products)\">Checkout</button></p>\n  <p v-show=\"checkoutStatus\">Checkout {{ checkoutStatus }}.</p>\n  <select name=\"\" id=\"\" v-model=\"message\">\n    <option v-bind:value=\"1\">1</option>\n    <option v-bind:value=\"2\">2</option>\n    <option v-bind:value=\"message\">1233331</option>\n  </select>\n  <p>{{message}}</p>\n</div>\n";
 
 /***/ }),
 /* 387 */
@@ -10689,11 +10695,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 var Foo = { template: '<div>foo</div>' };
 var Bar = { template: '<div>bar</div>' };
-var routes = [{ path: '/foo', component: _ProductList2['default'], name: 'foo' }, { path: '/bar', alias: '/abcd', component: Bar }];
+var routes = [{ path: '/foo', component: _ProductList2['default'], name: 'foo' }, { path: '/bar', alias: '/abcd', component: _Cart2['default'] }];
 var router = new VueRouter({
     routes: routes
 });
-
 Vue.use(VueRouter);
 Vue.filter('currency', _currency.currency);
 new Vue({

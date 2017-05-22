@@ -8,12 +8,11 @@ const Foo = { template: '<div>foo</div>' }
 const Bar = { template: '<div>bar</div>' }
 const routes = [
     { path: '/foo', component: ProductList ,name:'foo'},
-    { path: '/bar', alias:'/abcd',component:Bar}
+    { path: '/bar', alias:'/abcd',component:Cart}
 ]
 const router = new VueRouter({
     routes
 });
-
 Vue.use(VueRouter);
 Vue.filter('currency', currency)
 new Vue({
