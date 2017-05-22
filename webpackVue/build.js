@@ -26,7 +26,7 @@ runWebpack(webpackConfig,isProduction).then(config=>{
     var compiler = webpack(config);
     if(isProduction){return;}
     var server = new WebpackDevServer(compiler,{
-        contentBase:path.dirname(__dirname)+'/shoppingCart/app/dist/',
+        contentBase:`${path.dirname(__dirname)}/${moduleName.split('-')[0]}/app/dist/`,
     });
     server.listen(8080);
 });
@@ -55,7 +55,6 @@ function runWebpack(baseConfig, isProduction) {
         basePath = basePath.replace(/\\/,'/');
         //config.output.publicPath = `https://ceair-resource.oss-cn-shanghai.aliyuncs.com/${basePath}/js/`;
     }
-    console.log(moduleConfig.output.path)
     return new Promise(function(resolve, reject) {
         var count = 0
         resolve(config);
@@ -82,7 +81,7 @@ function runWebpack(baseConfig, isProduction) {
         })
 
         if(isHot){
-            runHot(compiler)
+            //runHot(compiler)
         }
     })
 }

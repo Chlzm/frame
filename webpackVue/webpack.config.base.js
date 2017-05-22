@@ -6,7 +6,6 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var os = require('os');
 var banner = os.userInfo().username + ' modified this file at ' + new Date().toLocaleString();
 module.exports = {
-    entry: '../test/app/src/main.js',
     output: {
         path: __dirname,
         filename: 'build1.js'
