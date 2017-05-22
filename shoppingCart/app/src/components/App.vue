@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Hello App!</h1>
+    <h1>Frame</h1>
     <p>
       <!-- use router-link component for navigation. -->
       <!-- specify the link by passing the `to` prop. -->
@@ -10,15 +10,12 @@
     </p>
     <!-- route outlet -->
     <!-- component matched by the route will render here -->
-    <router-view></router-view>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
-import ProductList from './ProductList.vue'
-import Cart from './Cart.vue'
 
-/*export default {
-  components: { ProductList, Cart }
-}*/
 </script>

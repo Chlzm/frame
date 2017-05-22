@@ -24,6 +24,7 @@ var isProduction = mode === 'prod';
 var isHot=mode === 'hot';
 runWebpack(webpackConfig,isProduction).then(config=>{
     var compiler = webpack(config);
+    if(isProduction){return;}
     var server = new WebpackDevServer(compiler,{
         contentBase:path.dirname(__dirname)+'/shoppingCart/app/dist/',
     });
