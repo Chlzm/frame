@@ -22,7 +22,14 @@ var isLib = mode.indexOf('lib') !== -1
 // 是否生产模式
 var isProduction = mode === 'prod';
 var isHot=mode === 'hot';
-runWebpack(webpackConfig,isProduction);
+console.log(path.dirname(__dirname))
+runWebpack(webpackConfig,isProduction).then(config=>{
+    var compiler = webpack(config);
+    var server = new WebpackDevServer(compiler,{
+        contentBase:path.dirname(__dirname),
+    });
+    server.listen(8080);
+});
 
 function runWebpack(baseConfig, isProduction) {
     var config = Object.create(baseConfig)
@@ -46,24 +53,11 @@ function runWebpack(baseConfig, isProduction) {
     }
 	
     // handle productionConfig
-    if (isProduction) {
-		basePath = basePath.replace(/\\/,'/');
-        config.output.publicPath = `https://ceair-resource.oss-cn-shanghai.aliyuncs.com/${basePath}/js/`;
-    }
+
 
     return new Promise(function(resolve, reject) {
         var count = 0
-        var compiler = webpack(config);
-        var server = new WebpackDevServer(compiler,{
-            contentBase:path.dirname(__dirname),
-            historyApiFallback: true,
-            hot: true,
-            inline: true,
-            stats: 'errors-only',
-            host: "localhost",
-            port: "8080",
-        });
-        server.listen(8080);
+        resolve(config)
         var compiler=webpack(config, function(err, stats) {
             if (err) {
                 reject(err)

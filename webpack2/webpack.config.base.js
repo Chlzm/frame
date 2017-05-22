@@ -40,6 +40,8 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx', '.js-lazy', '.jsx-lazy'],
         alias: {
+            vuex: path.resolve(__dirname, '../scripts/src/index.esm'),
+            'logger': path.resolve(__dirname, '../scripts/src/plugins/logger'),
             'base': path.join(__dirname,'../scripts/core/base.js'),
             'basePC': path.join(__dirname,'../scripts/core/base-pc.js'),
             'baseApp': path.join(__dirname,'../scripts/core/base-app.js'),
@@ -101,7 +103,7 @@ module.exports = {
         'react-dom': 'window.ReactDOM',
         'jQuery':'window.jQuery',
         'jquery':'window.jQuery',
-        'Zepto':'window.Zepto'
+        'Zepto':'window.Zepto',
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
@@ -112,9 +114,9 @@ module.exports = {
             banner: banner
         }),
         new HtmlWebpackPlugin({
-            filename:'../index.html',
-            template:'../template.html'
+            filename:'index.html',
+            template:'../template.html',
         }),
-        new ExtractTextPlugin('styles.css')
+        new ExtractTextPlugin('styles.css'),
     ]
 }

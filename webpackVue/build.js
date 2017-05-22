@@ -4,7 +4,7 @@ var [p1,p2,taskName,...fileNames] = process.argv;
 var moduleName = taskName.split(':')[0];
 var mode = taskName.split(':')[1]
 var port=taskName.split(':')[2]||3000;
-console.log(taskName,fileNames);
+console.log(moduleName,fileNames);
 if (!moduleName) {
     throw new Error('expect a moduleName of modules.js file')
 }
@@ -16,7 +16,7 @@ var WebpackDevServer = require("webpack-dev-server");
 var webpack = require('webpack')
 var modules = require('./modules')
 var configMode=mode==='prod'?'prod':'dev';
-var webpackConfig = require('./webpack.config.' + configMode)
+var webpackConfig = require('./webpack.config.'+ configMode);
 // 是否打包库文件
 var isLib = mode.indexOf('lib') !== -1
 // 是否生产模式
@@ -26,19 +26,15 @@ runWebpack(webpackConfig,isProduction);
 
 function runWebpack(baseConfig, isProduction) {
     var config = Object.create(baseConfig)
+    //config.output.path = `${path.dirname(__dirname)}/${moduleName.split('-')[0]}/${moduleName.split('-')[1]}/dist/`;
+    var config = Object.create(baseConfig)
     var basePath=path.join.apply(path,moduleName.split('-'))
-    var moduleConfig = modules(basePath,fileNames,isProduction)
+    var moduleConfig = modules(basePath,fileNames,isProduction);
     var outputType = typeof moduleConfig.output
-
-    // merge moduleConfit to config
     Object.assign(config, moduleConfig)
-    // handle entry
     config.entry = {}
     config.entry = moduleConfig.entry
-    //config.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/");
-    var compiler = webpack(config);
-    var server = new WebpackDevServer(compiler);
-    server.listen(8080);
+
     // handle output
     if (outputType === 'string') {
         config.output = {}
@@ -46,16 +42,16 @@ function runWebpack(baseConfig, isProduction) {
     } else if (outputType === 'object') {
         config.output = Object.assign({}, config.output, moduleConfig.output)
     }
-	
+
     // handle productionConfig
     if (isProduction) {
-		basePath = basePath.replace(/\\/,'/');
-        config.output.publicPath = `https://ceair-resource.oss-cn-shanghai.aliyuncs.com/${basePath}/js/`;
+        basePath = basePath.replace(/\\/,'/');
+        //config.output.publicPath = `https://ceair-resource.oss-cn-shanghai.aliyuncs.com/${basePath}/js/`;
     }
-
+    console.log(moduleConfig.output.path)
     return new Promise(function(resolve, reject) {
         var count = 0
-        
+
         var compiler=webpack(config, function(err, stats) {
             if (err) {
                 reject(err)

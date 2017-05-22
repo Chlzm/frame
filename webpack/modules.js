@@ -4,8 +4,6 @@
 fs=require('fs');
 var path = require('path')
 var rootPath = path.dirname(__dirname)
-var vacationLibPath = path.join(rootPath, 'scripts/core')
-var vacationAppPath = path.join(rootPath, 'scripts/core')
 
 module.exports=getConfigs; 
 
