@@ -44,7 +44,7 @@ module.exports = {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
-            filename: 'common.js'
+            filename: 'common.[hash].js'
         }),
         new webpack.BannerPlugin({
             banner: banner
