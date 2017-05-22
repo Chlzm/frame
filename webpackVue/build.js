@@ -22,7 +22,13 @@ var isLib = mode.indexOf('lib') !== -1
 // 是否生产模式
 var isProduction = mode === 'prod';
 var isHot=mode === 'hot';
-runWebpack(webpackConfig,isProduction);
+runWebpack(webpackConfig,isProduction).then(config=>{
+    var compiler = webpack(config);
+    var server = new WebpackDevServer(compiler,{
+        contentBase:path.dirname(__dirname)+'/shoppingCart/app/dist/',
+    });
+    server.listen(8080);
+});
 
 function runWebpack(baseConfig, isProduction) {
     var config = Object.create(baseConfig)
@@ -51,7 +57,7 @@ function runWebpack(baseConfig, isProduction) {
     console.log(moduleConfig.output.path)
     return new Promise(function(resolve, reject) {
         var count = 0
-
+        resolve(config);
         var compiler=webpack(config, function(err, stats) {
             if (err) {
                 reject(err)

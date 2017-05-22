@@ -26,7 +26,7 @@ console.log(path.dirname(__dirname))
 runWebpack(webpackConfig,isProduction).then(config=>{
     var compiler = webpack(config);
     var server = new WebpackDevServer(compiler,{
-        contentBase:path.dirname(__dirname),
+        contentBase:`${path.dirname(__dirname)}/${moduleName}/app/dist`,
     });
     server.listen(8080);
 });

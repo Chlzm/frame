@@ -16,9 +16,9 @@ function getConfigs(pathBase,filters,isProduction){
         entry:{},
         output: {
             path:path.join(path.join(__dirname,'../',pathBase,'dist')),
-            filename: '[name].[hash].js',
-            chunkFilename : '[name].[hash].min.js',
-            publicPath : "./js/"
+            filename: '[name].js',
+            chunkFilename : '[name].min.js',
+            publicPath : "./"
         }
     };
     filenames.forEach(function(filename){

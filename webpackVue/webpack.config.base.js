@@ -41,10 +41,20 @@ module.exports = {
             }
         ]
     },
+    externals: {
+        'react': 'window.React',
+        'react-dom': 'window.ReactDOM',
+        'jQuery':'window.jQuery',
+        'jquery':'window.jQuery',
+        'Zepto':'window.Zepto',
+        'vue':'window.Vue',
+        'Vue':'window.Vue',
+        'VueRouter':'window.VueRouter'
+    },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
-            filename: 'common.[hash].js'
+            filename: 'common.js'
         }),
         new webpack.BannerPlugin({
             banner: banner
