@@ -62,12 +62,13 @@ let method = {
         switch (sourceType){
 			
             case "all":
+                console.log('./' + projectName + '/' + platformName + '/*.pug')
                 //gulp.watch('' + projectName + '/' + platformName + '/src/js/**/**', method.compilejs);
                 gulp.watch('./' + projectName + '/' + platformName + '/src/less/**/**', method.compileless);
                 gulp.watch('./' + projectName + '/' + platformName + '/src/css/*.css', method.compilecss);
                 gulp.watch('./' + projectName + '/' + platformName + '/*.html', method.compilehtml);
-                // gulp.watch('./' + projectName + '/' + platformName + '/src/template/*.pug', method.compilejs);
-                gulp.watch('./' + projectName + '/' + platformName + '/*.pug', method.compilepug);
+                gulp.watch('./' + projectName + '/' + platformName + '/src/images/*,*', method.compileimage);
+                gulp.watch('./' + projectName + '/' + platformName + '/src/*.pug', method.compilepug);
                 break;
             case "js":
                 gulp.watch('' + projectName + '/' + platformName + '/src/js/**/**', method.compilejs);
@@ -136,7 +137,6 @@ let method = {
         }
     },
     compilecss(){
-		console.log(3)
         var from = path.join(__dirname,projectName,'/',platformName,'./src/css/'+fileName+'.css');
         var to = path.join(__dirname,projectName,'/',platformName,'./dist/css/');
 
@@ -183,8 +183,8 @@ let method = {
         }
     },
     compileimage(){
-		console.log(2)
-        var from = path.join(__dirname,projectName,'/',platformName,'./src/images/**/**');
+        console.log(fileName)
+        var from = path.join(__dirname,projectName,'/',platformName,'./src/images/'+fileName+'.*');
         var to = path.join(__dirname,projectName,'/',platformName,'/','./dist/images/');
         compile();
         function compile(){
