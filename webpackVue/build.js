@@ -1,6 +1,6 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 var path=require('path');
 var [p1,p2,taskName,...fileNames] = process.argv;
-
 var moduleName = taskName.split(':')[0];
 var mode = taskName.split(':')[1]
 var port=taskName.split(':')[2]||3000;
@@ -26,7 +26,7 @@ runWebpack(webpackConfig,isProduction).then(config=>{
     var compiler = webpack(config);
     if(isProduction){return;}
     var server = new WebpackDevServer(compiler,{
-        contentBase:`${path.dirname(__dirname)}/${moduleName.split('-')[0]}/app/dist/`,
+        contentBase:`${path.dirname(__dirname)}/${moduleName.split('-')[0]}/${moduleName.split('-')[1]}/dist/`,
     });
     server.listen(8080);
 });
@@ -55,6 +55,12 @@ function runWebpack(baseConfig, isProduction) {
         basePath = basePath.replace(/\\/,'/');
         //config.output.publicPath = `https://ceair-resource.oss-cn-shanghai.aliyuncs.com/${basePath}/js/`;
     }
+    config.plugins.push(
+        new HtmlWebpackPlugin({
+            filename:'../index.html',
+            template:path.join(__dirname,'../',moduleName.split('-')[0],'/',moduleName.split('-')[1],'/layout.html')
+        })
+    )
     return new Promise(function(resolve, reject) {
         var count = 0
         resolve(config);
@@ -80,31 +86,5 @@ function runWebpack(baseConfig, isProduction) {
             count += 1
         })
 
-        if(isHot){
-            //runHot(compiler)
-        }
     })
-}
-
-function runHot(compiler){
-    var server = new WebpackDevServer(compiler, {
-        contentBase: path.resolve("./transfer/app/dest/"),
-        historyApiFallback: {
-            disableDotRule: true,
-        },
-        watchOptions: {
-            aggregateTimeout: 300,
-            poll: 1000
-          },
-        stats: { colors: true },
-        inline: true,
-        filename: "index.min.js",
-    });
-    server.listen(port, "localhost", function() {
-
-    });
-}
-
-function logInfo(message) {
-    console.log(message)
 }

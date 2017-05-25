@@ -2,14 +2,10 @@ var webpack = require('webpack')
 var path = path = require('path')
 var rootPath = path.dirname(__dirname);
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+
 var os = require('os');
 var banner = os.userInfo().username + ' modified this file at ' + new Date().toLocaleString();
 module.exports = {
-    output: {
-        path: __dirname,
-        filename: 'build1.js'
-    },
     module: {
         rules: [
             { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
@@ -57,10 +53,6 @@ module.exports = {
         }),
         new webpack.BannerPlugin({
             banner: banner
-        }),
-        new HtmlWebpackPlugin({
-            filename:'index.html',
-            template:'../template.html',
         })
     ]
 }
