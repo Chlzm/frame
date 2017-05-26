@@ -1,0 +1,3 @@
+/*! liu modified this file at 2017-5-26 23:06:28 */
+!function(t){function e(r){if(s[r])return s[r].exports;var n=s[r]={exports:{},id:r,loaded:!1};return t[r].call(n.exports,n,n.exports,e),n.loaded=!0,n.exports}var s={};return e.m=t,e.c=s,e.p="https://ceair-resource.oss-cn-shanghai.aliyuncs.com/test/app/js/",e(0)}([function(t,e){"use strict";$.ajax({url:"/getjson",type:"get",dataType:"JSON",success:function(t){}})}]);
+//# sourceMappingURL=index.js.map
