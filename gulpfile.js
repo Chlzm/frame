@@ -90,7 +90,7 @@ let method = {
                 gulp.watch('./' + projectName + '/' + platformName + '/src/css/*.css', method.compilecss);
                 break;
             case "pug":
-                gulp.watch('./' + projectName + '/' + platformName + '/*.pug', method.compilepug);
+                gulp.watch('./' + projectName + '/' + platformName + '/src/*.pug', method.compilepug);
                 break;
         }
 

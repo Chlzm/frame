@@ -1,6 +1,7 @@
 var webpack = require('webpack')
 var baseConfig = require('./webpack.config.base')
 var prodConfig = Object.create(baseConfig)
+prodConfig.devtool = 'source-map'
 prodConfig.plugins.push(
     new webpack.DefinePlugin({
         'process.env': {
