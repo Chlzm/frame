@@ -4,7 +4,6 @@ require('./start');
 var [p1,p2,taskName,...fileNames] = process.argv;
 var moduleName = taskName.split(':')[0];
 var mode = taskName.split(':')[1]
-console.log(taskName,fileNames);
 if (!moduleName) {
     throw new Error('expect a moduleName of modules.js file')
 }

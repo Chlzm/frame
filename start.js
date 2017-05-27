@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const apis = require('./'+taskName+'/api');
 const app = express();
-let port = process.env.PORT || 8018;
+let port = process.env.PORT || 8080;
 app.use(express.static('./')) // Express 使用相对路径, 因此 public 不需要在 url 中
 app.use(bodyParser());
 app.set('views', './views');
@@ -16,5 +16,5 @@ for(let i in apis){
     })
 }
 app.listen(port,()=>{
-    console.log('Example app listening on port 8018!')
+    console.log('在浏览器中打开 localhost:8080!')
 });
