@@ -1,9 +1,8 @@
 var path=require('path');
+require('./start');
 var [p1,p2,taskName,...fileNames] = process.argv;
-
 var moduleName = taskName.split(':')[0];
 var mode = taskName.split(':')[1]
-var port=taskName.split(':')[2]||3000;
 console.log(taskName,fileNames);
 if (!moduleName) {
     throw new Error('expect a moduleName of modules.js file')
@@ -12,24 +11,13 @@ if (!moduleName) {
 if (!mode) {
     throw new Error('expect a mode, it must be one of ["dev", "prod"]')
 }
-var WebpackDevServer = require("webpack-dev-server");
 var webpack = require('webpack')
-var modules = require('./modules')
+var modules = require('./webpack/modules')
 var configMode=mode==='prod'?'prod':'dev';
-var webpackConfig = require('./webpack.config.' + configMode)
-// 是否打包库文件
-var isLib = mode.indexOf('lib') !== -1
+var webpackConfig = require('./webpack/webpack.config.' + configMode)
 // 是否生产模式
 var isProduction = mode === 'prod';
-var isHot=mode === 'hot';
-console.log(path.dirname(__dirname))
-runWebpack(webpackConfig,isProduction).then(config=>{
-    var compiler = webpack(config);
-    var server = new WebpackDevServer(compiler,{
-        contentBase:`${path.dirname(__dirname)}/${moduleName}/app/dist`,
-    });
-    server.listen(8080);
-});
+runWebpack(webpackConfig,isProduction);
 
 function runWebpack(baseConfig, isProduction) {
     var config = Object.create(baseConfig)
@@ -42,7 +30,6 @@ function runWebpack(baseConfig, isProduction) {
     // handle entry
     config.entry = {}
     config.entry = moduleConfig.entry
-    //config.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/");
 
     // handle output
     if (outputType === 'string') {
@@ -53,11 +40,13 @@ function runWebpack(baseConfig, isProduction) {
     }
 	
     // handle productionConfig
-
+    if (isProduction) {
+		basePath = basePath.replace(/\\/,'/');
+        config.output.publicPath = `https://ceair-resource.oss-cn-shanghai.aliyuncs.com/${basePath}/js/`;
+    }
 
     return new Promise(function(resolve, reject) {
         var count = 0
-        resolve(config)
         var compiler=webpack(config, function(err, stats) {
             if (err) {
                 reject(err)
@@ -77,34 +66,8 @@ function runWebpack(baseConfig, isProduction) {
             } else {
                 console.log('change times: ' + count)
             }
-            count += 1;
+            count += 1
         })
 
-        if(isHot){
-            //runHot(compiler)
-        }
     })
-}
-
-function runHot(compiler){
-    var server = new WebpackDevServer(compiler, {
-        contentBase: path.resolve("./transfer/app/dest/"),
-        historyApiFallback: {
-            disableDotRule: true,
-        },
-        watchOptions: {
-            aggregateTimeout: 300,
-            poll: 1000
-          },
-        stats: { colors: true },
-        inline: true,
-        filename: "index.min.js",
-    });
-    server.listen(port, "localhost", function() {
-
-    });
-}
-
-function logInfo(message) {
-    console.log(message)
 }
