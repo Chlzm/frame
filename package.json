@@ -36,6 +36,7 @@
     "express-jade": "0.0.3",
     "express-session": "^1.13.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "fetch": "^1.1.0",
     "gulp": "^3.9.1",
     "gulp-file-copy": "0.0.1",
     "gulp-less": "3.1.0",

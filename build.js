@@ -42,7 +42,7 @@ function runWebpack(baseConfig, isProduction) {
     }
     config.plugins.push(
         new HtmlWebpackPlugin({
-            filename:'../index.html',
+            filename:'./index.html',
             template:path.join(__dirname,'/',moduleName.split('-')[0],'/',moduleName.split('-')[1],'/layout.html')
         })
     )
