@@ -23,7 +23,7 @@ function getConfigs(pathBase,filters,isProduction){
     var configs={
         entry:{},
         output: {
-            path:path.join(path.join(__dirname,'../',pathBase,'dist/')),
+            path:path.join(path.join(__dirname,'../',pathBase,'dist/js/')),
             filename: filename,
             chunkFilename: chunkFilename,
             publicPath : "./js/"

@@ -1,20 +1,36 @@
 <template>
     <div>
         <span>{{inputValue}}</span>
-        <button @click="removeFromCart2(4)">子组件点击</button>
+        <button @click="actionsAdd">子组件按钮</button>
+        {{count}}
     </div>
 </template>
 
 <script>
-    import {mapActions} from 'vuex';
-    let delay = '';
+
+
+    import {mapState,mapActions,mapGetters} from 'vuex';
     export default {
         props: {
               inputValue: Number
         },
+        computed: {
+            /*count(){
+                return this.$store.state.list.number
+            },*/
+            ...mapState({
+                count : state => state.list.number
+            }),
+            ...mapGetters([
+                'checkoutNumber'
+            ])
+        },
         methods: {
+            method1(){
+                this.$store.dispatch('actionsAdd')
+            },
             ...mapActions([
-                'removeFromCart2'
+                'actionsAdd'
             ])
         }
     }

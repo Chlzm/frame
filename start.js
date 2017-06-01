@@ -9,7 +9,7 @@ let port = process.env.PORT || 8080;
 app.use(express.static('./')) // Express 使用相对路径, 因此 public 不需要在 url 中
 app.use(bodyParser());
 app.set('views', './views');
-app.set('view engine', 'jade');
+app.set('view engine', 'jade'); 
 for(let i in apis){
     app.get('/'+i,(req,res,next)=>{
         res.json(apis[i])

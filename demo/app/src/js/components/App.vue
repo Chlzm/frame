@@ -1,39 +1,37 @@
 <template>
     <div id="app">
-        <h1>首页</h1>
-        <ul>
-            <li><router-link to="/">/</router-link></li>
-            <li><router-link to="/parent">/parent</router-link></li>
-            <li><router-link to="/parent/foo">/parent/foo</router-link></li>
-            <li><router-link to="/parent/bar">/parent/bar</router-link></li>
-        </ul>
-        <router-view class="view"></router-view>
+        <!--getters: {{deriveStateNumber}}<br/>-->
+        state: {{count}}
+        <div>
+            <button @click="triggerAdd">加</button>
+            <button>减</button>
+        </div>
+        ------------------------------
+        <list></list>
     </div>
 </template>
-<style>
+<style scoped>
     ul,ol{list-style:none;}
 </style>
 <script>
     import List from './List.vue';
-    import Detail from './Detail.vue';
-    import store from '../store';
     import { mapState,mapGetters,mapMutations,mapActions} from 'vuex';
     export default {
         props:['inputValue'],
-        components: {List,Detail},
+        components: {List},
         methods:{
             triggerAdd(){
-                this.$store.dispatch('triggerAddToCart')
+                this.$store.dispatch('actionsAdd')
             }
         },
         computed: {
             ...mapState({
                 count:state=>{
-                    return state.list.message;
+                    return state.list.number;
                 }
             }),
             ...mapGetters([
-                'changeMessage'
+                'deriveStateNumber',
             ])
            /* count(){
                 console.log(this)

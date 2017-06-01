@@ -1,8 +1,9 @@
 var webpack = require('webpack')
+console.log(__dirname)
 var path = path = require('path')
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var rootPath = path.dirname(__dirname)
 var os = require('os');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var banner = os.userInfo().username + ' modified this file at ' + new Date().toLocaleString();
 module.exports = {
     module: {
@@ -19,7 +20,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use:ExtractTextPlugin.extract({
+                use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: "css-loader"
                 })
@@ -121,7 +122,8 @@ module.exports = {
             banner: banner
         }),
         new ExtractTextPlugin({
-            filename: '../css/style.css'
+            filename: 'style.css',
+            allChunks: true,
         }),
     ]
 }
