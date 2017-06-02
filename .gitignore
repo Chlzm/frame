@@ -1,4 +1,4 @@
-# Logs
+﻿# Logs
 #logs
 #*.log
 npm-debug.log*
@@ -41,35 +41,8 @@ launch.json
 .idea
 .gulp-scss-cache
 .txt
-/activity/3652.rar
-/activity/3652/pc/dest/images/100.png
-/activity/3652/pc/dest/images/43zyx.png
-/activity/3652/pc/dest/images/50.png
-/activity/3652/pc/dest/images/6s.png
-/activity/3652/pc/dest/images/bg.jpg
-/activity/3652/pc/dest/images/close.png
-/activity/3652/pc/dest/images/close2.png
-/activity/3652/pc/dest/images/huaw8.png
-/activity/3652/pc/dest/images/indexLogo.png
-/activity/3652/pc/dest/images/indexLogo01.png
-/activity/3652/pc/dest/images/indexLogo02.png
-/activity/3652/pc/dest/images/kmplay.png
-/activity/3652/pc/dest/images/kpw3.png
-/activity/3652/pc/dest/images/login.png
-/activity/3652/pc/dest/images/luckBg.jpg
-/activity/3652/pc/dest/images/luckButton.png
-/activity/3652/pc/dest/images/luckButtonYellow.png
-/activity/3652/pc/dest/images/popBg.png
-/activity/3652/pc/dest/images/ths.png
-/activity/3652/pc/dest/images/tipsBg.jpg
-/activity/3652/pc/dest/images/tipsText.jpg
-/activity/3652/pc/dest/index.html
-/activity/3652/pc/dest/js/index.min.js
+/demoReact
+/static-cfa
 /.editorconfig
 /desktop.ini
-/mall/app.rar
-/wxapp/积分商城/src/app - newbak.js
 /autobuild/*.log
-/redux-test
-/travel/app/src/js备份-2017-3-24-16：17
-/travel/app/src/less备份-2017-3-24-16：17
