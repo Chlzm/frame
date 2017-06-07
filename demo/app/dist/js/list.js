@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "./js/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 130);
+/******/ 	return __webpack_require__(__webpack_require__.s = 131);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -7498,7 +7498,8 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 130 */
+/* 130 */,
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7535,7 +7536,7 @@ var _index2 = _interopRequireDefault(_index);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var Home = {
-    template: '\n    <div class="home">\n      <h2>Home</h2>\n      <p>hello</p>\n    </div>\n  '
+    template: '\n    <div class="home">\n      <h2>Home133</h2>\n      <p>hello</p>\n    </div>\n  '
 };
 var Default = { template: '<div class="default">default</div>' };
 var Parent = {
@@ -7591,4 +7592,4 @@ $.ajax({
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=list.js.map

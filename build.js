@@ -40,12 +40,8 @@ function runWebpack(baseConfig, isProduction) {
         basePath = basePath.replace(/\\/,'/');
         //config.output.publicPath = `https://ceair-resource.oss-cn-shanghai.aliyuncs.com/${basePath}/js/`;
     }
-    config.plugins.push(
-        new HtmlWebpackPlugin({
-            filename:'./index.html',
-            template:path.join(__dirname,'/',moduleName.split('-')[0],'/',moduleName.split('-')[1],'/layout.html')
-        })
-    )
+   
+	
     return new Promise(function(resolve, reject) {
         var count = 0
         var compiler=webpack(config, function(err, stats) {
