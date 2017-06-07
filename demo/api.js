@@ -9,10 +9,11 @@ var Random = Mock.Random;
 var demoData = Mock.mock({
     'list|1-10': [{
         'id|+1': 1,
-        "string": Random.image('200x100', '#4A7BF7', 'Hello')
+        "string": Random.image('200x100', '#4A7BF7', 'Hello'),
+        "Date":Random.date('yyyy-MM-dd')
     }]
 });
 module.exports = {
-    'demoUrl': demoData,    // 接口1
+    'test/getJSON': demoData,    // 接口1
     'demoUrl2': demoData    // 接口2
 }
