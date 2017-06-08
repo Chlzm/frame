@@ -109,9 +109,6 @@ module.exports = {
         'jQuery':'window.jQuery',
         'jquery':'window.jQuery',
         'Zepto':'window.Zepto',
-        'vue':'window.Vue',
-        'Vue':'window.Vue',
-        'VueRouter':'window.VueRouter'
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({

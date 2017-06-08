@@ -4115,7 +4115,7 @@ var ReactBrowserEventEmitter = _assign({}, ReactEventEmitterMixin, {
    * they bubble to document.
    *
    * @param {string} registrationName Name of listener (e.g. `onClick`).
-   * @param {object} contentDocumentHandle Document which owns the container
+   * @param {object} contentDocumentHandle Document which owns the containers
    */
   listenTo: function (registrationName, contentDocumentHandle) {
     var mountAt = contentDocumentHandle;
@@ -4420,7 +4420,7 @@ function forEachSingleChild(bookKeeping, child, name) {
  * The provided forEachFunc(child, index) will be called for each
  * leaf child.
  *
- * @param {?*} children Children tree container.
+ * @param {?*} children Children tree containers.
  * @param {function(*, int)} forEachFunc
  * @param {*} forEachContext Context for forEachContext.
  */
@@ -4497,7 +4497,7 @@ function mapIntoWithKeyPrefixInternal(children, array, prefix, func, context) {
  * The provided mapFunction(child, key, index) will be called for each
  * leaf child.
  *
- * @param {?*} children Children tree container.
+ * @param {?*} children Children tree containers.
  * @param {function(*, int)} func The map function.
  * @param {*} context Context for mapFunction.
  * @return {object} Object containing the ordered map of results.
@@ -4521,7 +4521,7 @@ function forEachSingleChildDummy(traverseContext, child, name) {
  *
  * See https://facebook.github.io/react/docs/top-level-api.html#react.children.count
  *
- * @param {?*} children Children tree container.
+ * @param {?*} children Children tree containers.
  * @return {number} The number of children.
  */
 function countChildren(children, context) {
@@ -5727,7 +5727,7 @@ var ReactComponentTreeHook = {
       var nextChildID = nextChildIDs[i];
       var nextChild = get(nextChildID);
       !nextChild ? "development" !== 'production' ? invariant(false, 'Expected hook events to fire for the child before its parent includes it in onSetChildren().') : _prodInvariant('140') : void 0;
-      !(nextChild.childIDs != null || typeof nextChild.element !== 'object' || nextChild.element == null) ? "development" !== 'production' ? invariant(false, 'Expected onSetChildren() to fire for a container child before its parent includes it in onSetChildren().') : _prodInvariant('141') : void 0;
+      !(nextChild.childIDs != null || typeof nextChild.element !== 'object' || nextChild.element == null) ? "development" !== 'production' ? invariant(false, 'Expected onSetChildren() to fire for a containers child before its parent includes it in onSetChildren().') : _prodInvariant('141') : void 0;
       !nextChild.isMounted ? "development" !== 'production' ? invariant(false, 'Expected onMountComponent() to fire for the child before its parent includes it in onSetChildren().') : _prodInvariant('71') : void 0;
       if (nextChild.parentID == null) {
         nextChild.parentID = id;
@@ -7368,7 +7368,7 @@ ReactDOMComponent.Mixin = {
    * @internal
    * @param {ReactReconcileTransaction|ReactServerRenderingTransaction} transaction
    * @param {?ReactDOMComponent} the parent component instance
-   * @param {?object} info about the host container
+   * @param {?object} info about the host containers
    * @param {object} context
    * @return {string} The computed markup.
    */
@@ -7420,7 +7420,7 @@ ReactDOMComponent.Mixin = {
 
     assertValidProps(this, props);
 
-    // We create tags in the namespace of their parent container, except HTML
+    // We create tags in the namespace of their parent containers, except HTML
     // tags get no namespace.
     var namespaceURI;
     var parentTag;
@@ -8061,7 +8061,7 @@ function uncacheNode(inst) {
  * different times, we could race here and see a newer `_renderedChildren` than
  * the DOM nodes we see. To avoid this, ReactMultiChild calls
  * `prepareToManageChildren` before we change `_renderedChildren`, at which
- * time the container's child nodes are always cached (until it unmounts).
+ * time the containers's child nodes are always cached (until it unmounts).
  */
 function precacheChildNodes(inst, node) {
   if (inst._flags & Flags.hasCachedChildNodes) {
@@ -12008,21 +12008,21 @@ TopLevelWrapper.prototype.render = function () {
 
 /**
  * Mounting is the process of initializing a React component by creating its
- * representative DOM elements and inserting them into a supplied `container`.
- * Any prior content inside `container` is destroyed in the process.
+ * representative DOM elements and inserting them into a supplied `containers`.
+ * Any prior content inside `containers` is destroyed in the process.
  *
  *   ReactMount.render(
  *     component,
- *     document.getElementById('container')
+ *     document.getElementById('containers')
  *   );
  *
- *   <div id="container">                   <-- Supplied `container`.
+ *   <div id="containers">                   <-- Supplied `containers`.
  *     <div data-reactid=".3">              <-- Rendered reactRoot of React
  *       // ...                                 component.
  *     </div>
  *   </div>
  *
- * Inside of `container`, the first element rendered is the "reactRoot".
+ * Inside of `containers`, the first element rendered is the "reactRoot".
  */
 var ReactMount = {
 
@@ -12035,10 +12035,10 @@ var ReactMount = {
 
   /**
    * This is a hook provided to support rendering React components while
-   * ensuring that the apparent scroll position of its `container` does not
+   * ensuring that the apparent scroll position of its `containers` does not
    * change.
    *
-   * @param {DOMElement} container The `container` being rendered into.
+   * @param {DOMElement} container The `containers` being rendered into.
    * @param {function} renderCallback This must be called once to do the render.
    */
   scrollMonitor: function (container, renderCallback) {
@@ -12049,7 +12049,7 @@ var ReactMount = {
    * Take a component that's already mounted into the DOM and replace its props
    * @param {ReactComponent} prevComponent component instance already in the DOM
    * @param {ReactElement} nextElement component instance to render
-   * @param {DOMElement} container container to render into
+   * @param {DOMElement} container containers to render into
    * @param {?function} callback function triggered on completion
    */
   _updateRootComponent: function (prevComponent, nextElement, nextContext, container, callback) {
@@ -12067,7 +12067,7 @@ var ReactMount = {
    * Render a new component into the DOM. Hooked by hooks!
    *
    * @param {ReactElement} nextElement element to render
-   * @param {DOMElement} container container to render into
+   * @param {DOMElement} container containers to render into
    * @param {boolean} shouldReuseMarkup if we should skip the markup insertion
    * @return {ReactComponent} nextComponent
    */
@@ -12077,7 +12077,7 @@ var ReactMount = {
     // verify that that's the case.
     "development" !== 'production' ? warning(ReactCurrentOwner.current == null, '_renderNewRootComponent(): Render methods should be a pure function ' + 'of props and state; triggering nested component updates from ' + 'render is not allowed. If necessary, trigger nested updates in ' + 'componentDidUpdate. Check the render method of %s.', ReactCurrentOwner.current && ReactCurrentOwner.current.getName() || 'ReactCompositeComponent') : void 0;
 
-    !isValidContainer(container) ? "development" !== 'production' ? invariant(false, '_registerComponent(...): Target container is not a DOM element.') : _prodInvariant('37') : void 0;
+    !isValidContainer(container) ? "development" !== 'production' ? invariant(false, '_registerComponent(...): Target containers is not a DOM element.') : _prodInvariant('37') : void 0;
 
     ReactBrowserEventEmitter.ensureScrollValueMonitoring();
     var componentInstance = instantiateReactComponent(nextElement, false);
@@ -12095,9 +12095,9 @@ var ReactMount = {
   },
 
   /**
-   * Renders a React component into the DOM in the supplied `container`.
+   * Renders a React component into the DOM in the supplied `containers`.
    *
-   * If the React component was previously rendered into `container`, this will
+   * If the React component was previously rendered into `containers`, this will
    * perform an update on it and only mutate the DOM as necessary to reflect the
    * latest React component.
    *
@@ -12105,7 +12105,7 @@ var ReactMount = {
    * @param {ReactElement} nextElement Component element to render.
    * @param {DOMElement} container DOM element to render into.
    * @param {?function} callback function triggered on completion
-   * @return {ReactComponent} Component instance rendered in `container`.
+   * @return {ReactComponent} Component instance rendered in `containers`.
    */
   renderSubtreeIntoContainer: function (parentComponent, nextElement, container, callback) {
     !(parentComponent != null && ReactInstanceMap.has(parentComponent)) ? "development" !== 'production' ? invariant(false, 'parentComponent must be a valid React Component') : _prodInvariant('38') : void 0;
@@ -12118,7 +12118,7 @@ var ReactMount = {
     // Check if it quacks like an element
     nextElement != null && nextElement.props !== undefined ? ' This may be caused by unintentionally loading two independent ' + 'copies of React.' : '') : _prodInvariant('39', typeof nextElement === 'string' ? ' Instead of passing a string like \'div\', pass ' + 'React.createElement(\'div\') or <div />.' : typeof nextElement === 'function' ? ' Instead of passing a class like Foo, pass ' + 'React.createElement(Foo) or <Foo />.' : nextElement != null && nextElement.props !== undefined ? ' This may be caused by unintentionally loading two independent ' + 'copies of React.' : '') : void 0;
 
-    "development" !== 'production' ? warning(!container || !container.tagName || container.tagName.toUpperCase() !== 'BODY', 'render(): Rendering components directly into document.body is ' + 'discouraged, since its children are often manipulated by third-party ' + 'scripts and browser extensions. This may lead to subtle ' + 'reconciliation issues. Try rendering into a container element created ' + 'for your app.') : void 0;
+    "development" !== 'production' ? warning(!container || !container.tagName || container.tagName.toUpperCase() !== 'BODY', 'render(): Rendering components directly into document.body is ' + 'discouraged, since its children are often manipulated by third-party ' + 'scripts and browser extensions. This may lead to subtle ' + 'reconciliation issues. Try rendering into a containers element created ' + 'for your app.') : void 0;
 
     var nextWrappedElement = ReactElement(TopLevelWrapper, null, null, null, null, null, nextElement);
 
@@ -12175,29 +12175,29 @@ var ReactMount = {
   },
 
   /**
-   * Renders a React component into the DOM in the supplied `container`.
+   * Renders a React component into the DOM in the supplied `containers`.
    * See https://facebook.github.io/react/docs/top-level-api.html#reactdom.render
    *
-   * If the React component was previously rendered into `container`, this will
+   * If the React component was previously rendered into `containers`, this will
    * perform an update on it and only mutate the DOM as necessary to reflect the
    * latest React component.
    *
    * @param {ReactElement} nextElement Component element to render.
    * @param {DOMElement} container DOM element to render into.
    * @param {?function} callback function triggered on completion
-   * @return {ReactComponent} Component instance rendered in `container`.
+   * @return {ReactComponent} Component instance rendered in `containers`.
    */
   render: function (nextElement, container, callback) {
     return ReactMount._renderSubtreeIntoContainer(null, nextElement, container, callback);
   },
 
   /**
-   * Unmounts and destroys the React component rendered in the `container`.
+   * Unmounts and destroys the React component rendered in the `containers`.
    * See https://facebook.github.io/react/docs/top-level-api.html#reactdom.unmountcomponentatnode
    *
    * @param {DOMElement} container DOM element containing a React component.
    * @return {boolean} True if a component was found in and unmounted from
-   *                   `container`
+   *                   `containers`
    */
   unmountComponentAtNode: function (container) {
     // Various parts of our code (such as ReactCompositeComponent's
@@ -12206,7 +12206,7 @@ var ReactMount = {
     // render but we still don't expect to be in a render call here.)
     "development" !== 'production' ? warning(ReactCurrentOwner.current == null, 'unmountComponentAtNode(): Render methods should be a pure function ' + 'of props and state; triggering nested component updates from render ' + 'is not allowed. If necessary, trigger nested updates in ' + 'componentDidUpdate. Check the render method of %s.', ReactCurrentOwner.current && ReactCurrentOwner.current.getName() || 'ReactCompositeComponent') : void 0;
 
-    !isValidContainer(container) ? "development" !== 'production' ? invariant(false, 'unmountComponentAtNode(...): Target container is not a DOM element.') : _prodInvariant('40') : void 0;
+    !isValidContainer(container) ? "development" !== 'production' ? invariant(false, 'unmountComponentAtNode(...): Target containers is not a DOM element.') : _prodInvariant('40') : void 0;
 
     if ("development" !== 'production') {
       "development" !== 'production' ? warning(!nodeIsRenderedByOtherInstance(container), 'unmountComponentAtNode(): The node you\'re attempting to unmount ' + 'was rendered by another copy of React.') : void 0;
@@ -12218,11 +12218,11 @@ var ReactMount = {
       // root node.
       var containerHasNonRootReactChild = hasNonRootReactChild(container);
 
-      // Check if the container itself is a React root node.
+      // Check if the containers itself is a React root node.
       var isContainerReactRoot = container.nodeType === 1 && container.hasAttribute(ROOT_ATTR_NAME);
 
       if ("development" !== 'production') {
-        "development" !== 'production' ? warning(!containerHasNonRootReactChild, 'unmountComponentAtNode(): The node you\'re attempting to unmount ' + 'was rendered by React and is not a top-level container. %s', isContainerReactRoot ? 'You may have accidentally passed in a React root node instead ' + 'of its container.' : 'Instead, have the parent component update its state and ' + 'rerender in order to remove this component.') : void 0;
+        "development" !== 'production' ? warning(!containerHasNonRootReactChild, 'unmountComponentAtNode(): The node you\'re attempting to unmount ' + 'was rendered by React and is not a top-level containers. %s', isContainerReactRoot ? 'You may have accidentally passed in a React root node instead ' + 'of its containers.' : 'Instead, have the parent component update its state and ' + 'rerender in order to remove this component.') : void 0;
       }
 
       return false;
@@ -12233,7 +12233,7 @@ var ReactMount = {
   },
 
   _mountImageIntoNode: function (markup, container, instance, shouldReuseMarkup, transaction) {
-    !isValidContainer(container) ? "development" !== 'production' ? invariant(false, 'mountComponentIntoNode(...): Target container is not valid.') : _prodInvariant('41') : void 0;
+    !isValidContainer(container) ? "development" !== 'production' ? invariant(false, 'mountComponentIntoNode(...): Target containers is not valid.') : _prodInvariant('41') : void 0;
 
     if (shouldReuseMarkup) {
       var rootElement = getReactRootElementInContainer(container);
@@ -12251,7 +12251,7 @@ var ReactMount = {
         if ("development" !== 'production') {
           // because rootMarkup is retrieved from the DOM, various normalizations
           // will have occurred which will not be present in `markup`. Here,
-          // insert markup into a <div> or <iframe> depending on the container
+          // insert markup into a <div> or <iframe> depending on the containers
           // type to perform the same normalizations before comparing.
           var normalizer;
           if (container.nodeType === ELEMENT_NODE_TYPE) {
@@ -12273,7 +12273,7 @@ var ReactMount = {
         !(container.nodeType !== DOC_NODE_TYPE) ? "development" !== 'production' ? invariant(false, 'You\'re trying to render a component to the document using server rendering but the checksum was invalid. This usually means you rendered a different component type or props on the client from the one on the server, or your render() methods are impure. React cannot handle this case due to cross-browser quirks by rendering at the document root. You should look for environment dependent code in your components and ensure the props are the same client and server side:\n%s', difference) : _prodInvariant('42', difference) : void 0;
 
         if ("development" !== 'production') {
-          "development" !== 'production' ? warning(false, 'React attempted to reuse markup in a container but the ' + 'checksum was invalid. This generally means that you are ' + 'using server rendering and the markup generated on the ' + 'server was not what the client was expecting. React injected ' + 'new markup to compensate which works but you have lost many ' + 'of the benefits of server rendering. Instead, figure out ' + 'why the markup being generated is different on the client ' + 'or server:\n%s', difference) : void 0;
+          "development" !== 'production' ? warning(false, 'React attempted to reuse markup in a containers but the ' + 'checksum was invalid. This generally means that you are ' + 'using server rendering and the markup generated on the ' + 'server was not what the client was expecting. React injected ' + 'new markup to compensate which works but you have lost many ' + 'of the benefits of server rendering. Instead, figure out ' + 'why the markup being generated is different on the client ' + 'or server:\n%s', difference) : void 0;
         }
       }
     }
@@ -13772,7 +13772,7 @@ var ReactReconciler = {
    * @param {ReactComponent} internalInstance
    * @param {ReactReconcileTransaction|ReactServerRenderingTransaction} transaction
    * @param {?object} the containing host component instance
-   * @param {?object} info about the host container
+   * @param {?object} info about the host containers
    * @return {?string} Rendered markup to be inserted into the DOM.
    * @final
    * @internal
@@ -18072,7 +18072,7 @@ function getLeafNode(node) {
 }
 
 /**
- * Get the next sibling within a container. This will walk up the
+ * Get the next sibling within a containers. This will walk up the
  * DOM if a node's siblings have been exhausted.
  *
  * @param {DOMElement|DOMTextNode} node
@@ -18632,7 +18632,7 @@ var NONVISIBLE_TEST = /<(!--|link|noscript|meta|script|style)[ \r\n\t\f\/>]/;
 
 var createMicrosoftUnsafeLocalFunction = _dereq_(120);
 
-// SVG temp container for IE lacking innerHTML
+// SVG temp containers for IE lacking innerHTML
 var reusableSVGContainer;
 
 /**
@@ -18854,7 +18854,7 @@ function getComponentKey(component, index) {
 }
 
 /**
- * @param {?*} children Children tree container.
+ * @param {?*} children Children tree containers.
  * @param {!string} nameSoFar Name of the key path so far.
  * @param {!function} callback Callback to invoke with each child found.
  * @param {?*} traverseContext Used to pass information throughout the traversal
@@ -19721,7 +19721,7 @@ var getMarkupWrap = _dereq_(158);
 var invariant = _dereq_(162);
 
 /**
- * Dummy container used to render all markup.
+ * Dummy containers used to render all markup.
  */
 var dummyNode = ExecutionEnvironment.canUseDOM ? document.createElement('div') : null;
 
@@ -19923,7 +19923,7 @@ var ExecutionEnvironment = _dereq_(148);
 var invariant = _dereq_(162);
 
 /**
- * Dummy container used to detect which wraps are necessary.
+ * Dummy containers used to detect which wraps are necessary.
  */
 var dummyNode = ExecutionEnvironment.canUseDOM ? document.createElement('div') : null;
 

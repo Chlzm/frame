@@ -152,7 +152,7 @@
             // Control
             control: undefined,
             controlInverse: false,
-            controlBy: 'slide', //or 'container'
+            controlBy: 'slide', //or 'containers'
             // Swiping/no swiping
             allowSwipeToPrev: true,
             allowSwipeToNext: true,
@@ -329,21 +329,21 @@
             return swipers;
         }
         
-        // Save instance in container HTML Element and in data
+        // Save instance in containers HTML Element and in data
         s.container[0].swiper = s;
         s.container.data('swiper', s);
         
-        s.classNames.push('swiper-container-' + s.params.direction);
+        s.classNames.push('swiper-containers-' + s.params.direction);
         
         if (s.params.freeMode) {
-            s.classNames.push('swiper-container-free-mode');
+            s.classNames.push('swiper-containers-free-mode');
         }
         if (!s.support.flexbox) {
-            s.classNames.push('swiper-container-no-flexbox');
+            s.classNames.push('swiper-containers-no-flexbox');
             s.params.slidesPerColumn = 1;
         }
         if (s.params.autoHeight) {
-            s.classNames.push('swiper-container-autoheight');
+            s.classNames.push('swiper-containers-autoheight');
         }
         // Enable slides progress when required
         if (s.params.parallax || s.params.watchSlidesVisibility) {
@@ -353,14 +353,14 @@
         if (['cube', 'coverflow', 'flip'].indexOf(s.params.effect) >= 0) {
             if (s.support.transforms3d) {
                 s.params.watchSlidesProgress = true;
-                s.classNames.push('swiper-container-3d');
+                s.classNames.push('swiper-containers-3d');
             }
             else {
                 s.params.effect = 'slide';
             }
         }
         if (s.params.effect !== 'slide') {
-            s.classNames.push('swiper-container-' + s.params.effect);
+            s.classNames.push('swiper-containers-' + s.params.effect);
         }
         if (s.params.effect === 'cube') {
             s.params.resistanceRatio = 0;
@@ -432,7 +432,7 @@
         // RTL
         s.rtl = s.isHorizontal() && (s.container[0].dir.toLowerCase() === 'rtl' || s.container.css('direction') === 'rtl');
         if (s.rtl) {
-            s.classNames.push('swiper-container-rtl');
+            s.classNames.push('swiper-containers-rtl');
         }
         
         // Wrong RTL support
@@ -442,12 +442,12 @@
         
         // Columns
         if (s.params.slidesPerColumn > 1) {
-            s.classNames.push('swiper-container-multirow');
+            s.classNames.push('swiper-containers-multirow');
         }
         
         // Check for Android
         if (s.device.android) {
-            s.classNames.push('swiper-container-android');
+            s.classNames.push('swiper-containers-android');
         }
         
         // Add classes
@@ -2148,7 +2148,7 @@
                 }
             }
         
-            // Observe container
+            // Observe containers
             initObserver(s.container[0], {childList: false});
         
             // Observe wrapper

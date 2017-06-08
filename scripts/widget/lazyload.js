@@ -183,7 +183,7 @@ module.exports = function($,undefined){
                     }else{
                         options[k] = v
                     }
-                }else if(k == 'container'){ // options.container can be a seletor string \ dom \ jQuery object
+                }else if(k == 'container'){ // options.containers can be a seletor string \ dom \ jQuery object
                     if(options.hasOwnProperty(k)){
                         if(options[k] == w || options[k] == document){
                             options._$container = $window

@@ -1,31 +1,31 @@
 <template>
-    <div id="app">
-        <router-view></router-view>
-        <!--getters: {{deriveStateNumber}}<br/>
-        state: {{count}}
-        <div>
-            <button @click="triggerAdd">加</button>
-            <button>减</button>
-        </div>
-        ------------------------------
-        <list></list>-->
+    <div>
+        <h1>ITEM页</h1>
+        <button @click="goList">去列表页</button>
+        {{mount}}
     </div>
 </template>
 <style scoped>
     ul,ol{list-style:none;}
 </style>
 <script>
-    import List from './List.vue';
     import { mapState,mapGetters,mapMutations,mapActions} from 'vuex';
     export default {
         props:['inputValue'],
-        components: {List},
+        components: {},
         methods:{
             triggerAdd(){
                 this.$store.dispatch('actionsAdd')
+            },
+            goList(){
+                //this.$router.push({name:'index'})
+                this.$router.go(-1)
             }
         },
         computed: {
+            mount(){
+                debugger;
+            },
             ...mapState({
                 count:state=>{
                     return state.list.number;

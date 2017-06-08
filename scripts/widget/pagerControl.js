@@ -240,7 +240,7 @@
                 pageSizeList: [5, 10, 15, 20]
             }, settings);
             this.target = $(this.settings.target);
-            this.container = $('<div id="' + this.id + '" class="ui-paging-container"/>');
+            this.container = $('<div id="' + this.id + '" class="ui-paging-containers"/>');
             this.target.append(this.container);
             this.render(this.settings);
             this.format();

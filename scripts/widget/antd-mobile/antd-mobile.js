@@ -836,7 +836,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    checkScroll: function checkScroll(e) {
 	        var positionOnGrant = this.touchable.positionOnGrant;
-	        // container or window scroll
+	        // containers or window scroll
 	        var boundingRect = this.root.getBoundingClientRect();
 	        if (boundingRect.left !== positionOnGrant.clientLeft || boundingRect.top !== positionOnGrant.clientTop) {
 	            this._receiveSignal(Signals.RESPONDER_TERMINATED, e);
@@ -9804,7 +9804,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return;
 	    }
 	    _this2.clearScrollbarTimer();
-	    // reflow since the container may have changed
+	    // reflow since the containers may have changed
 	    that.reflow();
 	    that.scroller.doTouchStart(e.touches, e.timeStamp);
 	  }, false);
@@ -9850,7 +9850,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      pageX: e.pageX,
 	      pageY: e.pageY
 	    }], e.timeStamp);
-	    // reflow since the container may have changed
+	    // reflow since the containers may have changed
 	    that.reflow();
 	    e.preventDefault();
 	    document.addEventListener('mousemove', _this2.onMouseMove, false);
@@ -12136,7 +12136,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	return _react2.default.createElement(_rcTouchable2.default,{disabled:disabled,activeClassName:activeClass,activeStyle:activeStyle},
 	_react2.default.createElement('div',(0,_extends3.default)({className:(0,_classnames2.default)(cls)},restProps),
-	_react2.default.createElement('div',{className:prefixCls+'-item-container'},
+	_react2.default.createElement('div',{className:prefixCls+'-item-containers'},
 	iconName?_react2.default.createElement('span',{className:prefixCls+'-item-icon'},_react2.default.createElement(_icon2.default,{type:iconName})):null,
 	_react2.default.createElement('span',{className:prefixCls+'-item-content'},children))));
 	
@@ -12600,7 +12600,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	return _react2.default.createElement('form',{onSubmit:this.onSubmit,className:wrapCls,ref:'searchInputContainer'},
 	_react2.default.createElement('div',{className:prefixCls+'-input'},
 	_react2.default.createElement('div',{className:prefixCls+'-synthetic-ph',ref:'syntheticPh'},
-	_react2.default.createElement('span',{className:prefixCls+'-synthetic-ph-container',ref:'syntheticPhContainer'},
+	_react2.default.createElement('span',{className:prefixCls+'-synthetic-ph-containers',ref:'syntheticPhContainer'},
 	_react2.default.createElement('i',{className:prefixCls+'-synthetic-ph-icon'}),
 	_react2.default.createElement('span',{className:prefixCls+'-synthetic-ph-placeholder',style:{
 	visibility:placeholder&&!value?'visible':'hidden'}},
@@ -29355,7 +29355,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var props = instance.props;
 	
 	      var popupContainer = document.createElement('div');
-	      // Make sure default popup container will never cause scrollbar appearing
+	      // Make sure default popup containers will never cause scrollbar appearing
 	      // https://github.com/react-component/trigger/issues/41
 	      popupContainer.style.position = 'absolute';
 	      popupContainer.style.top = '0';
@@ -31582,7 +31582,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    return _react2["default"].createElement(
 	      'div',
-	      { className: prefixCls + '-container' },
+	      { className: prefixCls + '-containers' },
 	      _delay && this.props.delayActivityIndicator,
 	      _react2["default"].createElement(
 	        _ListView2["default"],
@@ -34739,7 +34739,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // Only do further compution when change happened
 	        if (oldLevel !== level) {
 	
-	          // Compute relative event position to container
+	          // Compute relative event position to containers
 	          var currentTouchLeftRel = currentTouchLeft - self.__clientLeft;
 	          var currentTouchTopRel = currentTouchTop - self.__clientTop;
 	

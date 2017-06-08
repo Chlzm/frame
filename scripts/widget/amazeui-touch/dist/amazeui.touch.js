@@ -1430,7 +1430,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    delete props.classPrefix;
 
-	    // As view transition container
+	    // As view transition containers
 	    if (transition) {
 	      return _react2.default.createElement(
 	        _reactAddonsCssTransitionGroup2.default,

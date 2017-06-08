@@ -4673,7 +4673,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 					tmp.removeChild( tmp.firstChild );
 				}
 
-				// Remember the top-level container for proper cleanup
+				// Remember the top-level containers for proper cleanup
 				tmp = safe.lastChild;
 			}
 		}
@@ -6639,7 +6639,7 @@ var documentElement = document.documentElement;
 
 			// Support: Android 2.3 only
 			// Div with explicit width and no margin-right incorrectly
-			// gets computed margin-right based on width of container (#3333)
+			// gets computed margin-right based on width of containers (#3333)
 			// WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
 			contents = div.appendChild( document.createElement( "div" ) );
 
